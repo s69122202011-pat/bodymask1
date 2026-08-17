@@ -36,7 +36,389 @@ body {
         radial-gradient(
             circle at 90% 30%,
             rgba(245, 218, 180, 0.35),
-            transparent 30%
+            transparent 30% 
+
+           /* =========================================
+   BODYMASK PATTY - PRODUCT PAGE
+   Luxury Pink Theme
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(255, 210, 225, 0.7), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(255, 225, 215, 0.8), transparent 30%),
+        linear-gradient(135deg, #fff8fa, #fff0f4 50%, #fff8f5);
+    color: #743c4c;
+    min-height: 100vh;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    height: 90px;
+    background: rgba(255, 250, 251, 0.95);
+    border-bottom: 1px solid #f2d8df;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+header h1,
+.logo {
+    color: #a94e68;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    letter-spacing: 5px;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #743c4c;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #c76b86;
+}
+
+/* =========================================
+   PRODUCT PAGE
+========================================= */
+
+.product-page {
+    width: 90%;
+    max-width: 1250px;
+    margin: 70px auto;
+}
+
+/* Title */
+
+.product-page > h1 {
+    text-align: center;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 48px;
+    color: #a84f69;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.product-page > p {
+    text-align: center;
+    color: #a87582;
+    font-size: 17px;
+    margin-bottom: 50px;
+}
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+.products,
+.product-list,
+#products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.product-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid #f1d1da;
+    border-radius: 28px;
+    padding: 35px 25px;
+    min-height: 300px;
+
+    box-shadow:
+        0 15px 40px rgba(175, 91, 116, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    text-align: center;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+    overflow: hidden;
+}
+
+/* Decorative glow */
+
+.product-card::before {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    background: #ffd8e4;
+    border-radius: 50%;
+    top: -80px;
+    right: -70px;
+    opacity: 0.5;
+    filter: blur(10px);
+}
+
+.product-card::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #ffe8dd;
+    border-radius: 50%;
+    bottom: -60px;
+    left: -40px;
+    opacity: 0.5;
+    filter: blur(10px);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: #d8899f;
+
+    box-shadow:
+        0 25px 55px rgba(175, 91, 116, 0.22),
+        0 0 30px rgba(255, 180, 200, 0.25);
+}
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.product-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 25px;
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.08);
+}
+
+/* =========================================
+   PRODUCT NAME
+========================================= */
+
+.product-card h2,
+.product-card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 24px;
+    color: #91465d;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================================
+   PRODUCT DESCRIPTION
+========================================= */
+
+.product-card p {
+    color: #9b6d79;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================================
+   PRICE
+========================================= */
+
+.product-card .price {
+    color: #b45a73;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 15px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* ถ้า price ไม่ได้ใช้ class */
+
+.product-card h4 {
+    color: #b45a73;
+    font-size: 21px;
+}
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.product-card button,
+.btn,
+button {
+    border: none;
+    background: linear-gradient(
+        135deg,
+        #c96b86,
+        #a94865
+    );
+    color: white;
+    padding: 13px 28px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(174, 75, 103, 0.25);
+
+    transition: 0.3s;
+
+    position: relative;
+    z-index: 5;
+}
+
+.product-card button:hover,
+.btn:hover,
+button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(
+        135deg,
+        #d47b94,
+        #b65370
+    );
+
+    box-shadow:
+        0 12px 25px rgba(174, 75, 103, 0.35);
+}
+
+/* =========================================
+   SET / BUNDLE
+========================================= */
+
+.product-card.set {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.9),
+            rgba(255,228,236,0.85)
+        );
+}
+
+.product-card.set h2,
+.product-card.set h3 {
+    color: #963d5a;
+}
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+section h2 {
+    text-align: center;
+    font-family: Georgia, serif;
+    color: #a84f69;
+    font-size: 35px;
+    letter-spacing: 2px;
+    margin: 60px 0 30px;
+}
+
+/* =========================================
+   DECORATIVE LUXURY LINE
+========================================= */
+
+.product-page::before {
+    content: "BODY CARE COLLECTION";
+    display: block;
+    width: fit-content;
+    margin: 0 auto 18px;
+    padding: 9px 22px;
+    border: 1px solid #e8b7c5;
+    border-radius: 30px;
+
+    color: #b45a73;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 4px;
+
+    background: rgba(255,255,255,0.6);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .products,
+    .product-list,
+    #products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-page > h1 {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 0 20px;
+        height: 75px;
+    }
+
+    header h1,
+    .logo {
+        font-size: 21px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .product-page {
+        width: 92%;
+        margin: 40px auto;
+    }
+
+    .product-page > h1 {
+        font-size: 32px;
+    }
+
+    .products,
+    .product-list,
+    #products {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        min-height: auto;
+    }
+}
         ),
         linear-gradient(
             135deg,
