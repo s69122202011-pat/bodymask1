@@ -1,25 +1,432 @@
-<div class="product-card" data-category="mask">
-    <h3>Pink Glow Body Mask</h3>
-    <div class="price">฿299</div>
-</div>
+<!DOCTYPE html>
+<html lang="th">
 
-<div class="product-card" data-category="scrub">
-    <h3>Soft Skin Body Scrub</h3>
-    <div class="price">฿259</div>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="product-card" data-category="lotion">
-    <h3>Moisture Body Lotion</h3>
-    <div class="price">฿289</div>
-</div>
+    <title>BODYMASK PATTY | Products</title>
 
-<div class="product-card" data-category="setA">
-    <h3>SET A — Glow Set</h3>
-    <div class="price">฿699</div>
-</div>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-<div class="product-card" data-category="setB">
-    <h3>SET B — Premium Set</h3>
-    <div class="price">฿899</div>
-</div>
-<link rel="stylesheet" href="style.css">
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="navbar">
+
+    <div class="brand">
+        <div class="brand-main">BODYMASK</div>
+        <div class="brand-sub">PATTY</div>
+    </div>
+
+    <nav>
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html" class="active">สินค้า</a>
+        <a href="cart.html">
+            🛍️ ตะกร้า
+            <span id="cart-count">0</span>
+        </a>
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="product-hero">
+
+    <div class="hero-small">
+        BODY CARE COLLECTION
+    </div>
+
+    <h1>
+        BEAUTY<br>
+        <span>BODY CARE</span>
+    </h1>
+
+    <p>
+        ผลิตภัณฑ์ดูแลผิวกาย เพื่อผิวสวย เนียนนุ่ม
+        และดูสุขภาพดีในทุกวัน
+    </p>
+
+</section>
+
+
+<!-- ================= PROMOTION ================= -->
+
+<section class="promotion">
+
+    <div class="promo-title">
+        ✨ SPECIAL PROMOTION ✨
+    </div>
+
+    <h2>ซื้อเยอะ ยิ่งลดเยอะ</h2>
+
+    <div class="promo-grid">
+
+        <div class="promo-card">
+            <div class="promo-price">฿500+</div>
+            <div class="promo-discount">ลด 5%</div>
+        </div>
+
+        <div class="promo-card">
+            <div class="promo-price">฿800+</div>
+            <div class="promo-discount">ลด 10%</div>
+        </div>
+
+        <div class="promo-card">
+            <div class="promo-price">฿1,200+</div>
+            <div class="promo-discount">ลด 15%</div>
+        </div>
+
+        <div class="promo-card premium">
+            <div class="promo-price">฿1,500+</div>
+            <div class="promo-discount">ลด 20%</div>
+        </div>
+
+    </div>
+
+    <p class="promo-note">
+        💗 โปรโมชั่นจะคำนวณให้อัตโนมัติเมื่อเพิ่มสินค้าลงตะกร้า
+    </p>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<main class="product-section">
+
+    <div class="section-heading">
+
+        <span>OUR COLLECTION</span>
+
+        <h2>
+            PRODUCTS
+        </h2>
+
+        <p>
+            เลือกผลิตภัณฑ์ที่เหมาะกับผิวของคุณ
+        </p>
+
+    </div>
+
+
+    <div class="product-grid">
+
+
+        <!-- PRODUCT 1 -->
+
+        <div class="product-card">
+
+            <div class="product-image mask">
+                <span>🌸</span>
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    BODY MASK
+                </div>
+
+                <h3>
+                    Pink Glow Body Mask
+                </h3>
+
+                <p>
+                    มาส์กผิวกายสูตรชมพู
+                    ช่วยเติมความชุ่มชื้น
+                    ให้ผิวดูเนียนและสดใส
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ฿299
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart(
+                            'Pink Glow Body Mask',
+                            299,
+                            '🌸'
+                        )">
+
+                        เพิ่มลงตะกร้า
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 2 -->
+
+        <div class="product-card">
+
+            <div class="product-image scrub">
+                <span>✨</span>
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    BODY SCRUB
+                </div>
+
+                <h3>
+                    Soft Skin Body Scrub
+                </h3>
+
+                <p>
+                    สครับผิวอย่างอ่อนโยน
+                    ช่วยขจัดเซลล์ผิวเก่า
+                    ให้ผิวเรียบเนียน
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ฿259
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart(
+                            'Soft Skin Body Scrub',
+                            259,
+                            '✨'
+                        )">
+
+                        เพิ่มลงตะกร้า
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 3 -->
+
+        <div class="product-card">
+
+            <div class="product-image lotion">
+                <span>🌷</span>
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    BODY LOTION
+                </div>
+
+                <h3>
+                    Moisture Body Lotion
+                </h3>
+
+                <p>
+                    โลชั่นบำรุงผิว
+                    เพิ่มความชุ่มชื้น
+                    ให้ผิวนุ่มน่าสัมผัส
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ฿289
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart(
+                            'Moisture Body Lotion',
+                            289,
+                            '🌷'
+                        )">
+
+                        เพิ่มลงตะกร้า
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SET A -->
+
+        <div class="product-card set-card">
+
+            <div class="set-label">
+                BEST SELLER
+            </div>
+
+            <div class="product-image set-a">
+                <span>💗</span>
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    BODY CARE SET
+                </div>
+
+                <h3>
+                    SET A — Glow Set
+                </h3>
+
+                <p>
+                    เซ็ตดูแลผิวครบขั้นตอน
+                    สำหรับคนที่ต้องการผิวสวย
+                    ฉ่ำโกลว์
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ฿699
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart(
+                            'SET A — Glow Set',
+                            699,
+                            '💗'
+                        )">
+
+                        เพิ่มลงตะกร้า
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SET B -->
+
+        <div class="product-card premium-card">
+
+            <div class="set-label premium-label">
+                PREMIUM
+            </div>
+
+            <div class="product-image set-b">
+                <span>👑</span>
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-type">
+                    PREMIUM BODY CARE
+                </div>
+
+                <h3>
+                    SET B — Premium Set
+                </h3>
+
+                <p>
+                    เซ็ตพรีเมียมสำหรับการดูแลผิว
+                    แบบครบทุกขั้นตอน
+                </p>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ฿899
+                    </div>
+
+                    <button
+                        class="add-cart"
+                        onclick="addToCart(
+                            'SET B — Premium Set',
+                            899,
+                            '👑'
+                        )">
+
+                        เพิ่มลงตะกร้า
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= DISCRETE MATH ================= -->
+
+<section class="math-section">
+
+    <div class="math-box">
+
+        <div class="math-icon">
+            ∑
+        </div>
+
+        <h2>
+            ระบบโปรโมชั่นแบบคณิตศาสตร์ดิสครีต
+        </h2>
+
+        <p>
+            ระบบจะจัดกลุ่มยอดซื้อเป็นเซต
+            และใช้ฟังก์ชันเงื่อนไขเพื่อหาส่วนลดที่เหมาะสม
+        </p>
+
+        <div class="formula">
+
+            D(x) =
+
+            <br>
+
+            0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; เมื่อ x &lt; 500
+
+            <br>
+
+            0.05x &nbsp;&nbsp;&nbsp;&nbsp; เมื่อ 500 ≤ x &lt; 800
+
+            <br>
+
+            0.10x &nbsp;&nbsp;&nbsp;&nbsp; เมื่อ 800 ≤ x &lt; 1,200
+
+            <br>
+
+            0.15x &nbsp;&nbsp;&nbsp;&nbsp; เมื่อ 1,200 ≤ x &lt; 1,500
+
+            <br>
+
+            0.20x &nbsp;&nbsp;&nbsp;&nbsp; เมื่อ x ≥ 1,500
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
