@@ -3,990 +3,159 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>BODYMASK PATTY | Products</title>
 
-    <meta name="description"
-          content="BODYMASK PATTY ผลิตภัณฑ์ดูแลผิวกาย Body Mask Body Scrub Body Lotion และ Set">
-
-    <title>BODYMASK PATTY | Body Care</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
 
-    <!-- ==================================================
-         HEADER
-    ================================================== -->
+<header>
 
-    <header class="header">
+    <div class="logo">
+        BODYMASK
+    </div>
 
-        <div class="logo">
-            BODYMASK
-            <span>PATTY</span>
-        </div>
+    <nav>
+        <a href="index.html">หน้าแรก</a>
+        <a href="product.html">สินค้า</a>
+        <a href="cart.html">ตะกร้า</a>
+        <a href="checkout.html">ชำระเงิน</a>
+    </nav>
 
-
-        <nav class="navbar">
-
-            <a href="index.html" class="active">
-                หน้าหลัก
-            </a>
-
-            <a href="product.html">
-                สินค้า
-            </a>
-
-            <a href="#category">
-                หมวดหมู่
-            </a>
-
-            <a href="#sets">
-                SET A / SET B
-            </a>
-
-            <a href="#contact">
-                ติดต่อเรา
-            </a>
-
-        </nav>
+</header>
 
 
-        <!-- Mobile menu -->
-        <button class="menu-button"
-                onclick="toggleMenu()">
+<main class="product-page">
 
-            ☰
+    <h1>Our Products</h1>
 
-        </button>
-
-    </header>
+    <p>
+        ดูแลผิวกายของคุณ ให้เนียนนุ่มและดูสุขภาพดี
+    </p>
 
 
+    <div class="products">
 
-    <!-- ==================================================
-         HERO
-    ================================================== -->
+        <!-- PRODUCT 1 -->
+        <div class="product-card">
 
-    <section class="hero">
+            <img src="images/body-mask.jpg" alt="Pink Glow Body Mask">
 
-        <div class="hero-content">
-
-            <span class="hero-label">
-                BODY CARE COLLECTION
-            </span>
-
-
-            <h1>
-                BODYMASK
-            </h1>
-
-
-            <h2>
-                PATTY
-            </h2>
-
+            <h2>Pink Glow Body Mask</h2>
 
             <p>
-                ดูแลผิวกายของคุณ
-                ให้เนียนนุ่มและดูสุขภาพดี
+                มาส์กผิวกาย ช่วยให้ผิวดูเรียบเนียน
+                พร้อมความชุ่มชื้น
             </p>
 
-
-            <div class="hero-buttons">
-
-                <a href="product.html"
-                   class="btn primary-btn">
-
-                    เลือกซื้อสินค้า
-
-                </a>
-
-
-                <a href="#category"
-                   class="btn secondary-btn">
-
-                    ดูหมวดหมู่
-
-                </a>
-
+            <div class="price">
+                ฿299
             </div>
+
+            <button>
+                เพิ่มลงตะกร้า
+            </button>
 
         </div>
 
 
-        <!-- Hero decoration -->
+        <!-- PRODUCT 2 -->
+        <div class="product-card">
 
-        <div class="hero-decoration">
+            <img src="images/body-scrub.jpg" alt="Soft Skin Body Scrub">
 
-            <div class="hero-circle">
-
-                <span>
-                    BODY
-                </span>
-
-                <strong>
-                    MASK
-                </strong>
-
-                <small>
-                    PATTY
-                </small>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         CATEGORY
-    ================================================== -->
-
-    <section class="category-section"
-             id="category">
-
-
-        <div class="category-header">
-
-            <span class="category-subtitle">
-                BODYMASK PATTY
-            </span>
-
-
-            <h2>
-                เลือกหมวดหมู่สินค้า
-            </h2>
-
+            <h2>Soft Skin Body Scrub</h2>
 
             <p>
-                ค้นหาผลิตภัณฑ์ที่เหมาะกับการดูแลผิวของคุณ
+                สครับผิวอย่างอ่อนโยน
+                ช่วยขจัดเซลล์ผิวเก่า
             </p>
 
-        </div>
-
-
-
-        <div class="category-options">
-
-
-            <!-- ALL -->
-
-            <button class="category-option active"
-                    data-category="all"
-                    onclick="selectCategory('all', this)">
-
-                <div class="category-icon">
-                    ✨
-                </div>
-
-                <div class="category-info">
-
-                    <h3>
-                        ทั้งหมด
-                    </h3>
-
-                    <span>
-                        All Products
-                    </span>
-
-                </div>
-
-                <div class="category-arrow">
-                    →
-                </div>
-
-            </button>
-
-
-
-            <!-- BODY MASK -->
-
-            <button class="category-option"
-                    data-category="mask"
-                    onclick="selectCategory('mask', this)">
-
-                <div class="category-icon">
-                    🧴
-                </div>
-
-                <div class="category-info">
-
-                    <h3>
-                        Body Mask
-                    </h3>
-
-                    <span>
-                        มาส์กผิวกาย
-                    </span>
-
-                </div>
-
-                <div class="category-arrow">
-                    →
-                </div>
-
-            </button>
-
-
-
-            <!-- BODY SCRUB -->
-
-            <button class="category-option"
-                    data-category="scrub"
-                    onclick="selectCategory('scrub', this)">
-
-                <div class="category-icon">
-                    🫧
-                </div>
-
-                <div class="category-info">
-
-                    <h3>
-                        Body Scrub
-                    </h3>
-
-                    <span>
-                        สครับผิวกาย
-                    </span>
-
-                </div>
-
-                <div class="category-arrow">
-                    →
-                </div>
-
-            </button>
-
-
-
-            <!-- BODY LOTION -->
-
-            <button class="category-option"
-                    data-category="lotion"
-                    onclick="selectCategory('lotion', this)">
-
-                <div class="category-icon">
-                    🌸
-                </div>
-
-                <div class="category-info">
-
-                    <h3>
-                        Body Lotion
-                    </h3>
-
-                    <span>
-                        โลชั่นบำรุงผิว
-                    </span>
-
-                </div>
-
-                <div class="category-arrow">
-                    →
-                </div>
-
-            </button>
-
-
-
-            <!-- SET A -->
-
-            <button class="category-option"
-                    data-category="setA"
-                    onclick="selectCategory('setA', this)">
-
-                <div class="category-icon">
-                    🎀
-                </div>
-
-                <div class="category-info">
-
-                    <h3>
-                        SET A
-                    </h3>
-
-                    <span>
-                        Glow Collection
-                    </span>
-
-                </div>
-
-                <div class="category-arrow">
-                    →
-                </div>
-
-            </button>
-
-
-
-            <!-- SET B -->
-
-            <button class="category-option premium"
-                    data-category="setB"
-                    onclick="selectCategory('setB', this)">
-
-                <div class="category-icon">
-                    👑
-                </div>
-
-                <div class="category-info">
-
-                    <h3>
-                        SET B
-                    </h3>
-
-                    <span>
-                        Premium Collection
-                    </span>
-
-                </div>
-
-                <div class="category-arrow">
-                    →
-                </div>
-
+            <div class="price">
+                ฿259
+            </div>
+
+            <button>
+                เพิ่มลงตะกร้า
             </button>
 
         </div>
 
-    </section>
 
+        <!-- PRODUCT 3 -->
+        <div class="product-card">
 
+            <img src="images/body-lotion.jpg" alt="Moisture Body Lotion">
 
-    <!-- ==================================================
-         FEATURE
-    ================================================== -->
-
-    <section class="feature-section">
-
-        <div class="feature-container">
-
-
-            <div class="feature-box">
-
-                <div class="feature-icon">
-                    ✨
-                </div>
-
-                <h3>
-                    ดูแลผิวกาย
-                </h3>
-
-                <p>
-                    ผลิตภัณฑ์สำหรับการดูแลผิวกายในทุกวัน
-                </p>
-
-            </div>
-
-
-            <div class="feature-box">
-
-                <div class="feature-icon">
-                    🌸
-                </div>
-
-                <h3>
-                    กลิ่นหอม
-                </h3>
-
-                <p>
-                    เติมความสดชื่นและความผ่อนคลาย
-                </p>
-
-            </div>
-
-
-            <div class="feature-box">
-
-                <div class="feature-icon">
-                    💗
-                </div>
-
-                <h3>
-                    คัดสรรสินค้า
-                </h3>
-
-                <p>
-                    เลือกผลิตภัณฑ์ที่เหมาะกับ BODY CARE
-                </p>
-
-            </div>
-
-
-            <div class="feature-box">
-
-                <div class="feature-icon">
-                    🎁
-                </div>
-
-                <h3>
-                    Set ราคาพิเศษ
-                </h3>
-
-                <p>
-                    เลือก Set A และ Set B ในราคาพิเศษ
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         PRODUCTS
-    ================================================== -->
-
-    <section class="product-section"
-             id="products">
-
-
-        <div class="section-title">
-
-            <span>
-                OUR PRODUCTS
-            </span>
-
-            <h2>
-                สินค้าแนะนำ
-            </h2>
+            <h2>Moisture Body Lotion</h2>
 
             <p>
-                ผลิตภัณฑ์ยอดนิยมจาก BODYMASK PATTY
+                โลชั่นบำรุงผิว เพิ่มความชุ่มชื้น
+                ให้ผิวนุ่มน่าสัมผัส
             </p>
 
-        </div>
-
-
-
-        <div class="product-list">
-
-
-            <!-- PRODUCT 1 -->
-
-            <div class="product-card"
-                 data-category="mask">
-
-
-                <div class="product-image">
-
-                    <span>
-                        BODY
-                    </span>
-
-                    <strong>
-                        MASK
-                    </strong>
-
-                </div>
-
-
-                <div class="product-content">
-
-                    <span class="product-tag">
-                        ⭐ RECOMMENDED
-                    </span>
-
-
-                    <h3>
-                        Pink Glow Body Mask
-                    </h3>
-
-
-                    <p>
-                        มาส์กผิวกายสูตร Pink Glow
-                        สำหรับการดูแลผิวกาย
-                    </p>
-
-
-                    <div class="product-bottom">
-
-                        <strong class="price">
-                            ฿299
-                        </strong>
-
-
-                        <button
-                            onclick="selectProduct('Pink Glow Body Mask', 299)">
-
-                            เลือกสินค้า
-
-                        </button>
-
-                    </div>
-
-                </div>
-
+            <div class="price">
+                ฿289
             </div>
 
-
-
-            <!-- PRODUCT 2 -->
-
-            <div class="product-card"
-                 data-category="mask">
-
-
-                <div class="product-image">
-
-                    <span>
-                        ROSE
-                    </span>
-
-                    <strong>
-                        MASK
-                    </strong>
-
-                </div>
-
-
-                <div class="product-content">
-
-                    <h3>
-                        Rose Body Mask
-                    </h3>
-
-
-                    <p>
-                        มาส์กผิวกายกลิ่นกุหลาบ
-                        เพิ่มความสดชื่น
-                    </p>
-
-
-                    <div class="product-bottom">
-
-                        <strong class="price">
-                            ฿329
-                        </strong>
-
-
-                        <button
-                            onclick="selectProduct('Rose Body Mask', 329)">
-
-                            เลือกสินค้า
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- PRODUCT 3 -->
-
-            <div class="product-card"
-                 data-category="scrub">
-
-
-                <div class="product-image">
-
-                    <span>
-                        SOFT
-                    </span>
-
-                    <strong>
-                        SCRUB
-                    </strong>
-
-                </div>
-
-
-                <div class="product-content">
-
-                    <span class="product-tag bestseller">
-                        🔥 BESTSELLER
-                    </span>
-
-
-                    <h3>
-                        Soft Skin Body Scrub
-                    </h3>
-
-
-                    <p>
-                        สครับผิวกาย
-                        เพื่อผิวที่ดูเรียบเนียน
-                    </p>
-
-
-                    <div class="product-bottom">
-
-                        <strong class="price">
-                            ฿259
-                        </strong>
-
-
-                        <button
-                            onclick="selectProduct('Soft Skin Body Scrub', 259)">
-
-                            เลือกสินค้า
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- PRODUCT 4 -->
-
-            <div class="product-card"
-                 data-category="lotion">
-
-
-                <div class="product-image">
-
-                    <span>
-                        MOISTURE
-                    </span>
-
-                    <strong>
-                        LOTION
-                    </strong>
-
-                </div>
-
-
-                <div class="product-content">
-
-                    <h3>
-                        Moisture Body Lotion
-                    </h3>
-
-
-                    <p>
-                        โลชั่นบำรุงผิว
-                        เติมความชุ่มชื้น
-                    </p>
-
-
-                    <div class="product-bottom">
-
-                        <strong class="price">
-                            ฿289
-                        </strong>
-
-
-                        <button
-                            onclick="selectProduct('Moisture Body Lotion', 289)">
-
-                            เลือกสินค้า
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <button>
+                เพิ่มลงตะกร้า
+            </button>
 
         </div>
 
 
+        <!-- SET A -->
+        <div class="product-card set">
 
-        <div class="view-all">
+            <img src="images/set-a.jpg" alt="Glow Set">
 
-            <a href="product.html"
-               class="btn primary-btn">
-
-                ดูสินค้าทั้งหมด →
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         SET A / SET B
-    ================================================== -->
-
-    <section class="sets-section"
-             id="sets">
-
-
-        <div class="section-title">
-
-            <span>
-                SPECIAL COLLECTION
-            </span>
-
-            <h2>
-                BODYMASK SET
-            </h2>
+            <h2>SET A — Glow Set</h2>
 
             <p>
-                เซ็ตผลิตภัณฑ์ที่คัดสรรมาให้คุณ
+                เซ็ตดูแลผิวครบขั้นตอน
+                สำหรับผิวสวยฉ่ำโกลว์
             </p>
 
+            <div class="price">
+                ฿699
+            </div>
+
+            <button>
+                เพิ่มลงตะกร้า
+            </button>
+
         </div>
 
 
+        <!-- SET B -->
+        <div class="product-card set">
 
-        <div class="sets-container">
+            <img src="images/set-b.jpg" alt="Premium Set">
 
-
-            <!-- SET A -->
-
-            <div class="set-card">
-
-
-                <div class="set-number">
-                    SET A
-                </div>
-
-
-                <div class="set-content">
-
-                    <span>
-                        GLOW COLLECTION
-                    </span>
-
-
-                    <h3>
-                        Glow Set
-                    </h3>
-
-
-                    <ul>
-
-                        <li>
-                            ✓ Pink Glow Body Mask
-                        </li>
-
-                        <li>
-                            ✓ Soft Skin Body Scrub
-                        </li>
-
-                        <li>
-                            ✓ Moisture Body Lotion
-                        </li>
-
-                    </ul>
-
-
-                    <div class="set-price">
-                        ฿699
-                    </div>
-
-
-                    <button
-                        onclick="selectProduct('SET A Glow Set', 699)">
-
-                        เลือก SET A
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- SET B -->
-
-            <div class="set-card premium-set">
-
-
-                <div class="set-number">
-                    SET B
-                </div>
-
-
-                <div class="set-content">
-
-                    <span>
-                        PREMIUM COLLECTION
-                    </span>
-
-
-                    <h3>
-                        Premium Set
-                    </h3>
-
-
-                    <ul>
-
-                        <li>
-                            ✓ Rose Body Mask
-                        </li>
-
-                        <li>
-                            ✓ Pink Glow Body Mask
-                        </li>
-
-                        <li>
-                            ✓ Soft Skin Body Scrub
-                        </li>
-
-                        <li>
-                            ✓ Moisture Body Lotion
-                        </li>
-
-                    </ul>
-
-
-                    <div class="set-price">
-                        ฿899
-                    </div>
-
-
-                    <button
-                        onclick="selectProduct('SET B Premium Set', 899)">
-
-                        เลือก SET B
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         CTA
-    ================================================== -->
-
-    <section class="cta-section">
-
-        <div class="cta-content">
-
-            <span>
-                BODYMASK PATTY
-            </span>
-
-
-            <h2>
-                พร้อมดูแลผิวกาย
-                ในแบบของคุณหรือยัง?
-            </h2>
-
+            <h2>SET B — Premium Set</h2>
 
             <p>
-                เลือกผลิตภัณฑ์ที่คุณชอบ
-                แล้วเริ่มต้น BODY CARE ROUTINE
+                เซ็ตพรีเมียมสำหรับการดูแลผิว
+                แบบครบทุกขั้นตอน
             </p>
 
-
-            <a href="product.html"
-               class="btn white-btn">
-
-                SHOP NOW
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==================================================
-         CONTACT
-    ================================================== -->
-
-    <section class="contact-section"
-             id="contact">
-
-
-        <div class="contact-container">
-
-
-            <div>
-
-                <span class="category-subtitle">
-                    CONTACT
-                </span>
-
-
-                <h2>
-                    ติดต่อ BODYMASK PATTY
-                </h2>
-
-
-                <p>
-                    หากต้องการสอบถามข้อมูลสินค้า
-                    สามารถติดต่อเราได้
-                </p>
-
+            <div class="price">
+                ฿899
             </div>
 
-
-            <div class="contact-info">
-
-                <p>
-                    📱 099-999-9999
-                </p>
-
-                <p>
-                    📧 bodymask@example.com
-                </p>
-
-                <p>
-                    📍 Bangkok, Thailand
-                </p>
-
-            </div>
+            <button>
+                เพิ่มลงตะกร้า
+            </button>
 
         </div>
 
-    </section>
+    </div>
 
-
-
-    <!-- ==================================================
-         FOOTER
-    ================================================== -->
-
-    <footer class="footer">
-
-        <div class="footer-logo">
-            BODYMASK PATTY
-        </div>
-
-
-        <p>
-            Body Care • Body Mask • Body Scrub • Body Lotion
-        </p>
-
-
-        <p>
-            © 2026 BODYMASK PATTY
-            All Rights Reserved.
-        </p>
-
-    </footer>
-
-
-
-    <!-- ==================================================
-         JAVASCRIPT
-    ================================================== -->
-
-    <script src="style.js"></script>
+</main>
 
 </body>
-
 </html>
