@@ -1,229 +1,88 @@
-/* =========================================================
+/* =================================================
    BODYMASK PATTY
-   JAVASCRIPT
-   ========================================================= */
+   SHOPPING CART + DISCOUNT SYSTEM
+================================================= */
 
 
-/* =========================================================
-   CATEGORY FILTER
-   ========================================================= */
+/* =================================================
+   SET OF PRODUCTS
+   แนวคิดคณิตศาสตร์ดิสครีต:
+   
+   P = {สินค้า 1, สินค้า 2, สินค้า 3, Set A, Set B}
+================================================= */
 
-function selectCategory(category, button) {
+const products = {
 
-    const buttons =
-        document.querySelectorAll(
-            ".category-option"
-        );
+    "Pink Glow Body Mask": {
+        price: 299,
+        icon: "🌸"
+    },
 
+    "Soft Skin Body Scrub": {
+        price: 259,
+        icon: "✨"
+    },
 
-    buttons.forEach(function(btn) {
+    "Moisture Body Lotion": {
+        price: 289,
+        icon: "🌷"
+    },
 
-        btn.classList.remove("active");
+    "SET A — Glow Set": {
+        price: 699,
+        icon: "💗"
+    },
 
-    });
+    "SET B — Premium Set": {
+        price: 899,
+        icon: "👑"
+    }
 
-
-    button.classList.add("active");
-
-
-    const products =
-        document.querySelectorAll(
-            ".product-card"
-        );
-
-
-    products.forEach(function(product) {
-
-        const productCategory =
-            product.getAttribute(
-                "data-category"
-            );
-
-
-        if (
-            category === "all" ||
-            productCategory === category
-        ) {
-
-            product.style.display = "block";
-
-            product.animate(
-                [
-                    {
-                        opacity: 0,
-                        transform: "translateY(20px)"
-                    },
-
-                    {
-                        opacity: 1,
-                        transform: "translateY(0)"
-                    }
-                ],
-                {
-                    duration: 400,
-                    easing: "ease-out"
-                }
-            );
-
-        } else {
-
-            product.style.display = "none";
-
-        }
-
-    });
-
-}
+};
 
 
-
-/* =========================================================
-   SELECT PRODUCT
-   ========================================================= */
-
-function selectProduct(name, price) {
-
-    localStorage.setItem(
-        "selectedProduct",
-        name
-    );
-
-
-    localStorage.setItem(
-        "selectedPrice",
-        price
-    );
-
-
-    /*
-       ไปหน้าสินค้า
-    */
-
-    window.location.href =
-        "product.html";
-
-}
-
-
-
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
-
-function toggleMenu() {
-
-    const navbar =
-        document.querySelector(
-            ".navbar"
-        );
-
-
-    navbar.classList.toggle(
-        "show"
-    );
-
-}
-
-
-
-/* =========================================================
-   CLOSE MOBILE MENU
-   ========================================================= */
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        const navbar =
-            document.querySelector(
-                ".navbar"
-            );
-
-        const menuButton =
-            document.querySelector(
-                ".menu-button"
-            );
-
-
-        if (
-            navbar &&
-            menuButton &&
-            !navbar.contains(event.target) &&
-            !menuButton.contains(event.target)
-        ) {
-
-            navbar.classList.remove(
-                "show"
-            );
-
-        }/* =====================================================
-   BODYMASK PATTY
-   SHOPPING CART SYSTEM
-===================================================== */
-
-
-/* =====================================================
+/* =================================================
    GET CART
-===================================================== */
+================================================= */
 
 function getCart() {
 
-    const cart =
-        localStorage.getItem("bodymaskCart");
-
-    if (!cart) {
-
-        return [];
-
-    }
-
-    try {
-
-        return JSON.parse(cart);
-
-    } catch (error) {
-
-        return [];
-
-    }
+    return JSON.parse(
+        localStorage.getItem("bodymask_cart")
+    ) || [];
 
 }
 
 
-
-/* =====================================================
+/* =================================================
    SAVE CART
-===================================================== */
+================================================= */
 
 function saveCart(cart) {
 
     localStorage.setItem(
-        "bodymaskCart",
+        "bodymask_cart",
         JSON.stringify(cart)
     );
 
 }
 
 
-
-/* =====================================================
+/* =================================================
    ADD PRODUCT TO CART
-===================================================== */
+================================================= */
 
-function addToCart(name, price) {
+function addToCart(name, price, icon) {
 
     let cart = getCart();
 
-
     const existingProduct =
-        cart.find(
-            item => item.name === name
-        );
+        cart.find(item => item.name === name);
 
 
     if (existingProduct) {
 
-        existingProduct.quantity += 1;
+        existingProduct.quantity++;
 
     } else {
 
@@ -231,7 +90,9 @@ function addToCart(name, price) {
 
             name: name,
 
-            price: Number(price),
+            price: price,
+
+            icon: icon,
 
             quantity: 1
 
@@ -242,58 +103,344 @@ function addToCart(name, price) {
 
     saveCart(cart);
 
-
     updateCartCount();
 
-
-    alert(
-        "เพิ่ม " +
-        name +
-        " ลงในตะกร้าแล้ว 💗"
-    );
+    showAddedMessage(name);
 
 }
 
 
+/* =================================================
+   CART COUNT
+================================================= */
 
-/* =====================================================
-   REMOVE PRODUCT
-===================================================== */
+function updateCartCount() {
 
-function removeFromCart(index) {
+    const cart = getCart();
 
-    let cart = getCart();
-
-
-    cart.splice(index, 1);
-
-
-    saveCart(cart);
-
-
-    renderCart();
+    const count =
+        cart.reduce(
+            (total, item) =>
+                total + item.quantity,
+            0
+        );
 
 
-    updateCartCount();
+    const element =
+        document.getElementById("cart-count");
+
+
+    if (element) {
+
+        element.textContent = count;
+
+    }
 
 }
 
 
+/* =================================================
+   DISCRETE MATHEMATICS
+   DISCOUNT FUNCTION
+   
+   D(x)
+================================================= */
 
-/* =====================================================
-   CHANGE QUANTITY
-===================================================== */
+function calculateDiscount(total) {
 
-function changeQuantity(index, amount) {
-
-    let cart = getCart();
+    let rate = 0;
 
 
-    if (!cart[index]) {
+    /*
+        Set of promotion rates
+
+        R = {0, 0.05, 0.10, 0.15, 0.20}
+    */
+
+
+    if (total >= 1500) {
+
+        rate = 0.20;
+
+    }
+
+    else if (total >= 1200) {
+
+        rate = 0.15;
+
+    }
+
+    else if (total >= 800) {
+
+        rate = 0.10;
+
+    }
+
+    else if (total >= 500) {
+
+        rate = 0.05;
+
+    }
+
+    else {
+
+        rate = 0;
+
+    }
+
+
+    const discount =
+        total * rate;
+
+
+    return {
+
+        rate: rate,
+
+        discount: discount,
+
+        finalPrice:
+            total - discount
+
+    };
+
+}
+
+
+/* =================================================
+   PROMOTION MESSAGE
+================================================= */
+
+function getPromotionMessage(total) {
+
+    if (total >= 1500) {
+
+        return "🎉 คุณได้รับส่วนลดสูงสุด 20%!";
+
+    }
+
+    if (total >= 1200) {
+
+        return "💗 คุณได้รับส่วนลด 15%";
+
+    }
+
+    if (total >= 800) {
+
+        return "✨ คุณได้รับส่วนลด 10%";
+
+    }
+
+    if (total >= 500) {
+
+        return "🌸 คุณได้รับส่วนลด 5%";
+
+    }
+
+    const remaining =
+        500 - total;
+
+
+    return `
+        💕 ซื้อเพิ่มอีก ฿${remaining.toFixed(0)}
+        รับส่วนลด 5%
+    `;
+
+}
+
+
+/* =================================================
+   SHOW ADD MESSAGE
+================================================= */
+
+function showAddedMessage(name) {
+
+    const message =
+        document.createElement("div");
+
+
+    message.className =
+        "cart-message";
+
+
+    message.innerHTML = `
+        💗 เพิ่ม <b>${name}</b>
+        ลงในตะกร้าแล้ว
+    `;
+
+
+    document.body.appendChild(message);
+
+
+    setTimeout(() => {
+
+        message.classList.add("show");
+
+    }, 10);
+
+
+    setTimeout(() => {
+
+        message.classList.remove("show");
+
+        setTimeout(() => {
+
+            message.remove();
+
+        }, 300);
+
+    }, 2000);
+
+}
+
+
+/* =================================================
+   CART PAGE
+================================================= */
+
+function displayCart() {
+
+    const cart =
+        getCart();
+
+
+    const container =
+        document.getElementById("cart-items");
+
+
+    if (!container) {
 
         return;
 
     }
+
+
+    container.innerHTML = "";
+
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-cart">
+
+                <div>
+                    🛍️
+                </div>
+
+                <h2>
+                    ตะกร้าของคุณยังว่าง
+                </h2>
+
+                <p>
+                    เลือกสินค้าที่คุณชื่นชอบ
+                    แล้วกลับมาอีกครั้ง
+                </p>
+
+                <a href="product.html">
+                    เลือกสินค้า
+                </a>
+
+            </div>
+
+        `;
+
+        updateCartSummary();
+
+        return;
+
+    }
+
+
+    cart.forEach((item, index) => {
+
+        const itemTotal =
+            item.price * item.quantity;
+
+
+        const div =
+            document.createElement("div");
+
+
+        div.className =
+            "cart-item";
+
+
+        div.innerHTML = `
+
+            <div class="cart-product-icon">
+                ${item.icon}
+            </div>
+
+            <div class="cart-product-info">
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+                <p>
+                    ฿${item.price.toLocaleString()}
+                    / ชิ้น
+                </p>
+
+            </div>
+
+
+            <div class="quantity-control">
+
+                <button
+                    onclick="changeQuantity(${index}, -1)">
+                    −
+                </button>
+
+                <span>
+                    ${item.quantity}
+                </span>
+
+                <button
+                    onclick="changeQuantity(${index}, 1)">
+                    +
+                </button>
+
+            </div>
+
+
+            <div class="cart-item-price">
+
+                ฿${itemTotal.toLocaleString()}
+
+            </div>
+
+
+            <button
+                class="remove-btn"
+                onclick="removeFromCart(${index})">
+
+                ×
+
+            </button>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+
+    updateCartSummary();
+
+}
+
+
+/* =================================================
+   CHANGE QUANTITY
+================================================= */
+
+function changeQuantity(index, amount) {
+
+    let cart =
+        getCart();
 
 
     cart[index].quantity += amount;
@@ -308,406 +455,163 @@ function changeQuantity(index, amount) {
 
     saveCart(cart);
 
-
-    renderCart();
-
+    displayCart();
 
     updateCartCount();
 
 }
 
 
+/* =================================================
+   REMOVE PRODUCT
+================================================= */
 
-/* =====================================================
-   FORMAT PRICE
-===================================================== */
+function removeFromCart(index) {
 
-function formatPrice(price) {
-
-    return Number(price).toLocaleString(
-        "th-TH"
-    );
-
-}
-
-
-
-/* =====================================================
-   RENDER CART
-===================================================== */
-
-function renderCart() {
-
-    const cart =
+    let cart =
         getCart();
 
 
-    const container =
-        document.getElementById(
-            "cart-items"
-        );
+    cart.splice(index, 1);
 
 
-    const emptyCart =
-        document.getElementById(
-            "empty-cart"
-        );
+    saveCart(cart);
 
+    displayCart();
 
-    if (!container) {
-
-        return;
-
-    }
-
-
-    if (cart.length === 0) {
-
-        container.innerHTML = "";
-
-        emptyCart.style.display =
-            "block";
-
-
-        updateCartSummary([]);
-
-        return;
-
-    }
-
-
-    emptyCart.style.display =
-        "none";
-
-
-    let html = "";
-
-
-    cart.forEach(
-        function(item, index) {
-
-
-            const itemTotal =
-                item.price *
-                item.quantity;
-
-
-            html += `
-
-                <div class="cart-item">
-
-
-                    <div class="cart-product-image">
-
-                        <span>
-                            BODY
-                        </span>
-
-                        <strong>
-                            MASK
-                        </strong>
-
-                    </div>
-
-
-
-                    <div class="cart-product-info">
-
-                        <h3>
-                            ${item.name}
-                        </h3>
-
-
-                        <p>
-                            BODYMASK PATTY
-                            Body Care Collection
-                        </p>
-
-
-                        <div class="cart-product-price">
-
-                            ฿${formatPrice(item.price)}
-
-                        </div>
-
-
-                        <div class="quantity-control">
-
-                            <button
-                                onclick="changeQuantity(${index}, -1)">
-
-                                −
-
-                            </button>
-
-
-                            <span>
-                                ${item.quantity}
-                            </span>
-
-
-                            <button
-                                onclick="changeQuantity(${index}, 1)">
-
-                                +
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="cart-item-right">
-
-                        <div class="item-total">
-
-                            ฿${formatPrice(itemTotal)}
-
-                        </div>
-
-
-                        <button
-                            class="remove-btn"
-                            onclick="removeFromCart(${index})">
-
-                            ลบสินค้า
-
-                        </button>
-
-                    </div>
-
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    container.innerHTML =
-        html;
-
-
-    updateCartSummary(cart);
+    updateCartCount();
 
 }
 
 
-
-/* =====================================================
+/* =================================================
    CART SUMMARY
-===================================================== */
+================================================= */
 
-function updateCartSummary(cart) {
-
-    let quantity = 0;
-
-    let subtotal = 0;
-
-
-    cart.forEach(
-        function(item) {
-
-            quantity +=
-                item.quantity;
-
-
-            subtotal +=
-                item.price *
-                item.quantity;
-
-        }
-    );
-
-
-    /*
-       จัดส่งฟรีเมื่อซื้อครบ 500
-    */
-
-    let shipping = 0;
-
-
-    if (
-        subtotal > 0 &&
-        subtotal < 500
-    ) {
-
-        shipping = 40;
-
-    }
-
-
-    const total =
-        subtotal +
-        shipping;
-
-
-
-    const countElement =
-        document.getElementById(
-            "cart-count"
-        );
-
-
-    const summaryCount =
-        document.getElementById(
-            "summary-count"
-        );
-
-
-    const summarySubtotal =
-        document.getElementById(
-            "summary-subtotal"
-        );
-
-
-    const summaryShipping =
-        document.getElementById(
-            "summary-shipping"
-        );
-
-
-    const summaryTotal =
-        document.getElementById(
-            "summary-total"
-        );
-
-
-
-    if (countElement) {
-
-        countElement.innerText =
-            quantity +
-            " รายการ";
-
-    }
-
-
-    if (summaryCount) {
-
-        summaryCount.innerText =
-            quantity;
-
-    }
-
-
-    if (summarySubtotal) {
-
-        summarySubtotal.innerText =
-            "฿" +
-            formatPrice(subtotal);
-
-    }
-
-
-    if (summaryShipping) {
-
-        summaryShipping.innerText =
-            shipping === 0
-                ? "ฟรี"
-                : "฿" +
-                  formatPrice(shipping);
-
-    }
-
-
-    if (summaryTotal) {
-
-        summaryTotal.innerText =
-            "฿" +
-            formatPrice(total);
-
-    }
-
-}
-
-
-
-/* =====================================================
-   CART COUNT
-===================================================== */
-
-function updateCartCount() {
+function updateCartSummary() {
 
     const cart =
         getCart();
 
 
-    const count =
+    const subtotal =
         cart.reduce(
-            function(total, item) {
 
-                return total +
-                    item.quantity;
+            (total, item) =>
 
-            },
+                total +
+                item.price *
+                item.quantity,
+
             0
+
         );
 
 
-    const cartBadges =
-        document.querySelectorAll(
-            ".cart-count"
+    const result =
+        calculateDiscount(subtotal);
+
+
+    const subtotalElement =
+        document.getElementById(
+            "subtotal"
         );
 
 
-    cartBadges.forEach(
-        function(badge) {
-
-            badge.innerText =
-                count;
-
-        }
-    );
-
-}
-
-
-
-/* =====================================================
-   CHECKOUT
-===================================================== */
-
-function goCheckout() {
-
-    const cart =
-        getCart();
-
-
-    if (cart.length === 0) {
-
-        alert(
-            "กรุณาเลือกสินค้าก่อนสั่งซื้อ 💗"
+    const discountElement =
+        document.getElementById(
+            "discount"
         );
 
-        return;
+
+    const totalElement =
+        document.getElementById(
+            "total"
+        );
+
+
+    const promotionElement =
+        document.getElementById(
+            "promotion-message"
+        );
+
+
+    if (subtotalElement) {
+
+        subtotalElement.textContent =
+            "฿" +
+            subtotal.toLocaleString();
 
     }
 
 
-    window.location.href =
-        "checkout.html";
+    if (discountElement) {
+
+        discountElement.textContent =
+            "- ฿" +
+            result.discount.toLocaleString(
+                undefined,
+                {
+                    minimumFractionDigits: 2
+                }
+            );
+
+    }
+
+
+    if (totalElement) {
+
+        totalElement.textContent =
+            "฿" +
+            result.finalPrice.toLocaleString(
+                undefined,
+                {
+                    minimumFractionDigits: 2
+                }
+            );
+
+    }
+
+
+    if (promotionElement) {
+
+        promotionElement.innerHTML =
+            getPromotionMessage(subtotal);
+
+    }
 
 }
 
 
+/* =================================================
+   CLEAR CART
+================================================= */
 
-/* =====================================================
-   INITIALIZE
-===================================================== */
+function clearCart() {
+
+    localStorage.removeItem(
+        "bodymask_cart"
+    );
+
+
+    displayCart();
+
+    updateCartCount();
+
+}
+
+
+/* =================================================
+   RUN WHEN PAGE LOADS
+================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
+    function () {
 
         updateCartCount();
 
-    }
-);
-
+        displayCart();
 
     }
 );
