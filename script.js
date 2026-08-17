@@ -1,18 +1,21 @@
-/* =========================================
+/* =========================================================
    BODYMASK PATTY
-   CATEGORY SYSTEM
-========================================= */
+   JAVASCRIPT
+   ========================================================= */
+
+
+/* =========================================================
+   CATEGORY FILTER
+   ========================================================= */
 
 function selectCategory(category, button) {
 
-    // ดึงปุ่มหมวดหมู่ทั้งหมด
     const buttons =
         document.querySelectorAll(
             ".category-option"
         );
 
 
-    // เอา active ออกจากทุกปุ่ม
     buttons.forEach(function(btn) {
 
         btn.classList.remove("active");
@@ -20,18 +23,15 @@ function selectCategory(category, button) {
     });
 
 
-    // เพิ่ม active ให้ปุ่มที่เลือก
     button.classList.add("active");
 
 
-    // ดึงสินค้าทั้งหมด
     const products =
         document.querySelectorAll(
             ".product-card"
         );
 
 
-    // ตรวจสอบสินค้า
     products.forEach(function(product) {
 
         const productCategory =
@@ -47,9 +47,23 @@ function selectCategory(category, button) {
 
             product.style.display = "block";
 
-            // Animation
-            product.style.animation =
-                "productShow 0.5s ease";
+            product.animate(
+                [
+                    {
+                        opacity: 0,
+                        transform: "translateY(20px)"
+                    },
+
+                    {
+                        opacity: 1,
+                        transform: "translateY(0)"
+                    }
+                ],
+                {
+                    duration: 400,
+                    easing: "ease-out"
+                }
+            );
 
         } else {
 
@@ -62,39 +76,87 @@ function selectCategory(category, button) {
 }
 
 
-/* =========================================
-   PRODUCT ANIMATION
-========================================= */
 
-const style =
-document.createElement("style");
+/* =========================================================
+   SELECT PRODUCT
+   ========================================================= */
 
-style.innerHTML = `
+function selectProduct(name, price) {
 
-@keyframes productShow {
+    localStorage.setItem(
+        "selectedProduct",
+        name
+    );
 
-    from {
 
-        opacity: 0;
+    localStorage.setItem(
+        "selectedPrice",
+        price
+    );
 
-        transform:
-            translateY(15px)
-            scale(0.97);
 
-    }
+    /*
+       ไปหน้าสินค้า
+    */
 
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
+    window.location.href =
+        "product.html";
 
 }
 
-`;
 
-document.head.appendChild(style);
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+function toggleMenu() {
+
+    const navbar =
+        document.querySelector(
+            ".navbar"
+        );
+
+
+    navbar.classList.toggle(
+        "show"
+    );
+
+}
+
+
+
+/* =========================================================
+   CLOSE MOBILE MENU
+   ========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const navbar =
+            document.querySelector(
+                ".navbar"
+            );
+
+        const menuButton =
+            document.querySelector(
+                ".menu-button"
+            );
+
+
+        if (
+            navbar &&
+            menuButton &&
+            !navbar.contains(event.target) &&
+            !menuButton.contains(event.target)
+        ) {
+
+            navbar.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
