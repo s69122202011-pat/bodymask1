@@ -1,1 +1,423 @@
+<!DOCTYPE html>
+<html lang="th">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="ตะกร้าสินค้า BODYMASK PATTY">
+
+    <title>ตะกร้าสินค้า | BODYMASK PATTY</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ==============================
+         HEADER
+    =============================== -->
+
+    <header class="header">
+
+        <a href="index.html"
+           class="logo">
+
+            BODYMASK
+
+            <span>PATTY</span>
+
+        </a>
+
+
+        <nav class="navbar">
+
+            <a href="index.html">
+                หน้าหลัก
+            </a>
+
+            <a href="product.html">
+                สินค้า
+            </a>
+
+            <a href="index.html#category">
+                หมวดหมู่
+            </a>
+
+            <a href="index.html#sets">
+                SET A / SET B
+            </a>
+
+            <a href="cart.html"
+               class="active">
+
+                🛒 ตะกร้า
+
+            </a>
+
+        </nav>
+
+
+        <button class="menu-button"
+                onclick="toggleMenu()">
+
+            ☰
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ==============================
+         CART HERO
+    =============================== -->
+
+    <section class="cart-hero">
+
+        <div>
+
+            <span>
+                BODYMASK PATTY
+            </span>
+
+            <h1>
+                Shopping Cart
+            </h1>
+
+            <p>
+                ตรวจสอบสินค้า
+                และจำนวนสินค้าของคุณ
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==============================
+         CART CONTENT
+    =============================== -->
+
+    <main class="cart-container">
+
+
+        <!-- CART LEFT -->
+
+        <section class="cart-products">
+
+
+            <div class="cart-title">
+
+                <div>
+
+                    <span>
+                        YOUR SHOPPING BAG
+                    </span>
+
+                    <h2>
+                        ตะกร้าสินค้าของคุณ
+                    </h2>
+
+                </div>
+
+
+                <span id="cart-count">
+                    0 รายการ
+                </span>
+
+            </div>
+
+
+
+            <!-- PRODUCTS -->
+
+            <div id="cart-items">
+
+                <!-- JavaScript จะสร้างสินค้าในนี้ -->
+
+            </div>
+
+
+
+            <!-- EMPTY CART -->
+
+            <div id="empty-cart"
+                 class="empty-cart"
+                 style="display:none;">
+
+                <div class="empty-icon">
+                    🛍️
+                </div>
+
+                <h2>
+                    ยังไม่มีสินค้าในตะกร้า
+                </h2>
+
+                <p>
+                    เลือกผลิตภัณฑ์ BODYMASK PATTY
+                    ที่คุณชื่นชอบได้เลย
+                </p>
+
+                <a href="product.html"
+                   class="cart-btn primary">
+
+                    เลือกซื้อสินค้า
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ==============================
+             SUMMARY
+        =============================== -->
+
+        <aside class="cart-summary">
+
+
+            <div class="summary-header">
+
+                <span>
+                    ORDER SUMMARY
+                </span>
+
+                <h2>
+                    สรุปคำสั่งซื้อ
+                </h2>
+
+            </div>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    จำนวนสินค้า
+                </span>
+
+                <strong id="summary-count">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    ราคาสินค้า
+                </span>
+
+                <strong id="summary-subtotal">
+                    ฿0
+                </strong>
+
+            </div>
+
+
+
+            <div class="summary-row">
+
+                <span>
+                    ค่าจัดส่ง
+                </span>
+
+                <strong id="summary-shipping">
+                    ฿0
+                </strong>
+
+            </div>
+
+
+
+            <div class="free-shipping">
+
+                🚚
+                ซื้อครบ ฿500
+                จัดส่งฟรี
+
+            </div>
+
+
+
+            <div class="summary-total">
+
+                <span>
+                    ยอดรวมทั้งหมด
+                </span>
+
+                <strong id="summary-total">
+                    ฿0
+                </strong>
+
+            </div>
+
+
+
+            <button class="checkout-btn"
+                    onclick="goCheckout()">
+
+                ดำเนินการสั่งซื้อ
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+
+
+            <a href="product.html"
+               class="continue-shopping">
+
+                ← เลือกซื้อสินค้าต่อ
+
+            </a>
+
+
+        </aside>
+
+    </main>
+
+
+
+    <!-- ==============================
+         BENEFITS
+    =============================== -->
+
+    <section class="cart-benefits">
+
+        <div>
+
+            <span>
+                🚚
+            </span>
+
+            <strong>
+                จัดส่งทั่วประเทศ
+            </strong>
+
+            <small>
+                ส่งสินค้าอย่างปลอดภัย
+            </small>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                💳
+            </span>
+
+            <strong>
+                ชำระเงินง่าย
+            </strong>
+
+            <small>
+                สะดวกและปลอดภัย
+            </small>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                🎁
+            </span>
+
+            <strong>
+                โปรโมชั่นพิเศษ
+            </strong>
+
+            <small>
+                พบกับโปรโมชั่นของเรา
+            </small>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                💗
+            </span>
+
+            <strong>
+                BODYMASK PATTY
+            </strong>
+
+            <small>
+                ดูแลผิวในแบบของคุณ
+            </small>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <footer class="footer">
+
+        <div class="footer-logo">
+            BODYMASK PATTY
+        </div>
+
+        <p>
+            Body Care • Body Mask • Body Scrub • Body Lotion
+        </p>
+
+        <p>
+            © 2026 BODYMASK PATTY
+        </p>
+
+    </footer>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        /*
+         * แสดงตะกร้าทันที
+         */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                renderCart();
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
